@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "rootDir": ".",
+      "strict": true,
+      "esModuleInterop": true
+    },
+    "include": [
+      "vidyaai-api/src/**/*.ts",
+      "vidyaai-ui/src/**/*.ts",
+    ],
+    "exclude": [
+      "node_modules",
+      "dist"
+    ]
+  }
+  

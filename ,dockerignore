@@ -1,0 +1,4 @@
+node_modules
+vidyaai-ui/node_modules
+vidyaai-api/node_modules
+dist
