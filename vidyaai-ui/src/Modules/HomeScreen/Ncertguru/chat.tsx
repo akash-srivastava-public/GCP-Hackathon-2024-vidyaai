@@ -66,7 +66,7 @@ const Chatbot: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/detect-intent",
+        `${window.origin}/detect-intent`,
         { query: inputText },
         {
           headers: {
