@@ -1,24 +1,33 @@
-# Use a Node.js base image
-FROM node:14
+# Use the official Node.js 14 image as base
+FROM node:14 AS builder
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Copy package.json and package-lock.json to the working directory
+COPY package.json package-lock.json ./
 
-# Install dependencies for both vidyaai-ui and vidyaai-api
+# Install dependencies
 RUN npm install
 
-# Copy vidyaai-ui and vidyaai-api code
-COPY vidyaai-ui/ ./vidyaai-ui
-COPY vidyaai-api/ ./vidyaai-api
+# Copy all files to the working directory
+COPY . .
 
-# Build the vidyaai-ui
-RUN npm run build:client
+# Build client
+WORKDIR /app/vidyaai-ui
+RUN npm install
+RUN npm run build
+
+# Build server
+WORKDIR /app/vidyaai-api
+RUN npm install
+RUN npm run build
+
+# Switch back to root directory
+WORKDIR /app
 
 # Expose the port the app runs on
-EXPOSE 3000
+EXPOSE 8080
 
-# Command to run the app
+# Start the app
 CMD ["npm", "start"]

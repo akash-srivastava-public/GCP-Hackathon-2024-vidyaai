@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build:client && npm run start:server",
+    "start:dev": "npm run build:client && npm run start:server",
     "build:client": "cd vidyaai-ui && npm install && npm run build",
-    "start:server": "cd vidyaai-api && npm install && ts-node src/index.ts"
+    "build:server": "cd vidyaai-api && npm install && npm run build",
+    "start:server": "cd vidyaai-api && npm install && ts-node src/index.ts",
+    "start":"cd vidyaai-api && node dist/index.js",
+    "bootstrap":"npm run build:client && npm run build:server"
   },
   "keywords": [],
   "author": "",

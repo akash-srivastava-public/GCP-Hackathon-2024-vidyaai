@@ -12,9 +12,12 @@ import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import { AppBar, Toolbar } from "@mui/material";
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export const MainScreen = () => {
   const [open, setOpen] = useState(false);
+  const [auth,SetAuth] = useState(true);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -25,25 +28,8 @@ export const MainScreen = () => {
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
-        {[{ comp: <>Home</>, txt: "Home" },
-          { comp: <>Account</>, txt: "Account" },].map((text, index) => (
-            <ListItem key={text.txt} disablePadding>
-              <ListItemButton
-                onClick={() => {
-                  setPage(text.comp);
-                }}
-              >
-                <ListItemText primary={text.txt} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-      </List>
-      <Divider />
-      <List>
         {[
-          { comp: <Ncertguru />, txt: "NCERT GURU" },
-          { comp: <>CodeMitra</>, txt: "CODE MITRA" },
-          { comp: <>Vocab</>, txt: "VOCABUDDY" },
+          { comp: <>Home</>, txt: "Home" }
         ].map((text, index) => (
           <ListItem key={text.txt} disablePadding>
             <ListItemButton
@@ -56,6 +42,33 @@ export const MainScreen = () => {
           </ListItem>
         ))}
       </List>
+      <Divider />
+      {auth?<List>
+        {[
+          {
+            comp: <Ncertguru ncertkey={"chat"} />,
+            txt: "VIDYA CHAT",
+            id: "chat",
+          },
+          {
+            comp: <Ncertguru ncertkey={"search"} />,
+            txt: "VIDYA SEARCH",
+            id: "searchWidgetTrigger",
+          },
+        ].map((text, index) => (
+          <ListItem key={text.txt} disablePadding>
+            <ListItemButton
+              id={text.id}
+              onClick={() => {
+                setPage(text.comp);
+              }}
+            >
+              <ListItemText primary={text.txt} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>:<></>}
+      
     </Box>
   );
 
@@ -63,7 +76,10 @@ export const MainScreen = () => {
     <>
       {" "}
       <div>
-        <AppBar position="fixed" sx={{ backgroundColor: "white", maxHeight:"8%", marginTop:"-0.5%" }}>
+        <AppBar
+          position="fixed"
+          sx={{ backgroundColor: "white", maxHeight: "8%", marginTop: "-0.5%" }}
+        >
           <Toolbar>
             <IconButton
               onClick={toggleDrawer(true)}
@@ -74,16 +90,17 @@ export const MainScreen = () => {
             </IconButton>
             <IconButton
               onClick={() => {}}
-              sx={{ ml: 1, color: "Black", flexGrow: 1}}
+              sx={{ ml: 1, color: "Black", flexGrow: 1 }}
             >
-              vidya.ai
+              VIDYA AI 🕮
             </IconButton>
-            <IconButton
-              onClick={() => {}}
-              sx={{ ml: 1, color: "red", flexGrow: 0 }}
+            <Button
+              variant="contained"
+              color="primary"
+              startIcon={auth?<LoginIcon />:<LogoutIcon />}
+              sx={{ marginRight: 2 }}
             >
-              Logout
-            </IconButton>
+            </Button>
           </Toolbar>
         </AppBar>
         <div>{page}</div>
@@ -91,7 +108,6 @@ export const MainScreen = () => {
           {DrawerList}
         </Drawer>
       </div>
-      
     </>
   );
 };

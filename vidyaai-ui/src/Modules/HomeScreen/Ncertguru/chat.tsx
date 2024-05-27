@@ -7,16 +7,14 @@ import {
   Typography,
   Container,
   Grid,
-  CircularProgress,
   Box,
-  Avatar,
   IconButton,
 } from "@mui/material";
 import axios from "axios";
 import './BubbleLoading.css'
-import SendIcon from '@mui/icons-material/Send';
-import MicIcon from '@mui/icons-material/Mic';
 import DeleteIcon from '@mui/icons-material/Delete';
+import InfoIcon from '@mui/icons-material/Info';
+import RobotIcon from '@mui/icons-material/SmartToy';
 
 interface Message {
   id: number;
@@ -127,12 +125,13 @@ const Chatbot: React.FC = () => {
     <div>
       <AppBar position="fixed" sx={{ backgroundColor: '#4C8CF5', marginTop: "3%" }}>
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            NCERT GURU
-          </Typography>
-          <IconButton onClick={handleClearChats} sx={{ ml: 1, color: 'red' }}>
+          <IconButton onClick={handleClearChats} sx={{ ml: 1, flexGrow: 0, color: 'white' }}>
+          <InfoIcon />
+          </IconButton>
+          <RobotIcon sx={{ flexGrow: 1 }} fontSize="small" />
+          <IconButton onClick={handleClearChats} sx={{ ml: 1, flexGrow: 0, color: 'red' }}>
           <DeleteIcon />
-        </IconButton>
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Container  sx={{ height: "80%", marginBottom: "5%", marginTop: "8%"}}>
