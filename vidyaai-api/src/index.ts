@@ -3,6 +3,9 @@ import { SessionsClient } from "@google-cloud/dialogflow-cx";
 import dotenv from "dotenv";
 import cors from "cors";
 import path from "path";
+const passport = require('passport');
+const session = require('express-session');
+import "./auth"
 
 // Load environment variables from .env file
 dotenv.config();
@@ -13,6 +16,20 @@ const port = process.env.PORT || 8080;
 // Middleware to parse JSON requests
 app.use(express.json());
 app.use(cors());
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+function checkloggedin(req:any,res:any,next:any){
+  req.user ? next() : res.send(401);
+}
 
 // Dialogflow CX configuration
 const projectId = process.env.GOOGLE_CLOUD_PROJECT!;
@@ -68,7 +85,32 @@ async function detectIntentText(query: string): Promise<DetectIntentResult> {
   return result;
 }
 
-app.post("/detect-intent", async (req: Request, res: Response) => {
+app.get('/auth/google',passport.authenticate('google',{
+  scope:['email','profile']
+}));
+
+app.get('/auth/google/callback', passport.authenticate(
+  'google', {
+    successRedirect:"/",
+    failureRedirect:"/login"
+}));
+
+app.get('/auth/user',checkloggedin, async (req: any, res: any) =>{
+  res.json(req.user)
+} )
+
+app.use('/auth/logout', async(req:any,res,any)=>{
+  req.session.destroy((err:any) => {
+    if (err) {
+      console.error('Error destroying session:', err);
+      res.status(500).send('Error destroying session');
+    } else {
+      res.redirect('/login');
+    }
+  });
+})
+
+app.post("/detect-intent",checkloggedin, async (req: Request, res: Response) => {
   const query = req.body.query;
   if (!query) {
     return res.status(400).send("Query text is required");

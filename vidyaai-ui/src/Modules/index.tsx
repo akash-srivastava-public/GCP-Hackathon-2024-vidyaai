@@ -12,18 +12,28 @@ import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import { AppBar, Toolbar } from "@mui/material";
-import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+import axios from 'axios'
 
-export const MainScreen = () => {
+export const MainScreen = ({handleAuth}:{handleAuth:any}) => {
   const [open, setOpen] = useState(false);
-  const [auth,SetAuth] = useState(true);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
 
   const [page, setPage] = useState(<>Home</>);
+
+  async function logoutHandle(){
+    try {
+      const response = await axios.get(`${window.origin}/auth/logout`);
+      handleAuth(false)
+    } catch (error) {
+      console.error('Error fetching auth status:', error);
+      handleAuth(false); // In case of error, consider the user not authenticated
+    }
+
+  }
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
@@ -43,7 +53,7 @@ export const MainScreen = () => {
         ))}
       </List>
       <Divider />
-      {auth?<List>
+      <List>
         {[
           {
             comp: <Ncertguru ncertkey={"chat"} />,
@@ -67,8 +77,7 @@ export const MainScreen = () => {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>:<></>}
-      
+      </List>
     </Box>
   );
 
@@ -95,9 +104,10 @@ export const MainScreen = () => {
               VIDYA AI 🕮
             </IconButton>
             <Button
+              onClick={logoutHandle}
               variant="contained"
               color="primary"
-              startIcon={auth?<LoginIcon />:<LogoutIcon />}
+              startIcon={<LogoutIcon />}
               sx={{ marginRight: 2 }}
             >
             </Button>

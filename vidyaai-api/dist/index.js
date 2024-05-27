@@ -17,6 +17,9 @@ const dialogflow_cx_1 = require("@google-cloud/dialogflow-cx");
 const dotenv_1 = __importDefault(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
+const passport = require('passport');
+const session = require('express-session');
+require("./auth");
 // Load environment variables from .env file
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -24,6 +27,18 @@ const port = process.env.PORT || 8080;
 // Middleware to parse JSON requests
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+function checkloggedin(req, res, next) {
+    console.log(req.user);
+    req.user ? next() : res.send(401);
+}
 // Dialogflow CX configuration
 const projectId = process.env.GOOGLE_CLOUD_PROJECT;
 const location = process.env.DIALOGFLOW_CX_LOCATION;
@@ -62,7 +77,28 @@ function detectIntentText(query) {
         return result;
     });
 }
-app.post("/detect-intent", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('/auth/google', passport.authenticate('google', {
+    scope: ['email', 'profile']
+}));
+app.get('/auth/google/callback', passport.authenticate('google', {
+    successRedirect: "/",
+    failureRedirect: "/login"
+}));
+app.get('/auth/user', checkloggedin, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.json(req.user);
+}));
+app.use('/auth/logout', (req, res, any) => __awaiter(void 0, void 0, void 0, function* () {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error destroying session:', err);
+            res.status(500).send('Error destroying session');
+        }
+        else {
+            res.redirect('/login');
+        }
+    });
+}));
+app.post("/detect-intent", checkloggedin, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const query = req.body.query;
     if (!query) {
         return res.status(400).send("Query text is required");
