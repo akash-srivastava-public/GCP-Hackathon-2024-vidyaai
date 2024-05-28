@@ -105,7 +105,7 @@ app.use('/auth/logout', async(req:any,res,any)=>{
       console.error('Error destroying session:', err);
       res.status(500).send('Error destroying session');
     } else {
-      res.redirect('/login');
+      res.status(200).send('Successfully Logged Out');
     }
   });
 })
