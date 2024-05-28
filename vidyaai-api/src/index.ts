@@ -17,8 +17,18 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 app.use(cors());
 
+function generateCookieSecret(length: number = 32): string {
+  const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let secret = '';
+  for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length);
+      secret += charset[randomIndex];
+  }
+  return secret;
+}
+
 app.use(session({
-  secret: 'keyboard cat',
+  secret: generateCookieSecret() ,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }

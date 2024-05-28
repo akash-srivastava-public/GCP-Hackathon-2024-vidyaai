@@ -11,9 +11,20 @@ import { Ncertguru } from "./HomeScreen/Ncertguru/index";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
-import { AppBar, Toolbar } from "@mui/material";
+import { AppBar, ListItemIcon, Toolbar } from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import axios from 'axios'
+import Home from "./HomeScreen/home";
+import { styled } from '@mui/system';
+
+const GradientBackground = styled('div')({
+  background: 'linear-gradient(to bottom, #ffffff, #b3e5fc)',
+  minHeight: '100vh', // Set the minimum height to fill the viewport
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
 
 export const MainScreen = ({handleAuth}:{handleAuth:any}) => {
   const [open, setOpen] = useState(false);
@@ -22,7 +33,7 @@ export const MainScreen = ({handleAuth}:{handleAuth:any}) => {
     setOpen(newOpen);
   };
 
-  const [page, setPage] = useState(<>Home</>);
+  const [page, setPage] = useState(<Home />);
 
   async function logoutHandle(){
     try {
@@ -39,7 +50,7 @@ export const MainScreen = ({handleAuth}:{handleAuth:any}) => {
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
         {[
-          { comp: <>Home</>, txt: "Home" }
+          { comp: <Home />, txt: "Home" }
         ].map((text, index) => (
           <ListItem key={text.txt} disablePadding>
             <ListItemButton
@@ -57,12 +68,12 @@ export const MainScreen = ({handleAuth}:{handleAuth:any}) => {
         {[
           {
             comp: <Ncertguru ncertkey={"chat"} />,
-            txt: "VIDYA CHAT",
+            txt: "VIDYA AI CHAT",
             id: "chat",
           },
           {
             comp: <Ncertguru ncertkey={"search"} />,
-            txt: "VIDYA SEARCH",
+            txt: "VIDYA AI SEARCH",
             id: "searchWidgetTrigger",
           },
         ].map((text, index) => (
@@ -82,7 +93,7 @@ export const MainScreen = ({handleAuth}:{handleAuth:any}) => {
   );
 
   return (
-    <>
+    <GradientBackground>
       {" "}
       <div>
         <AppBar
@@ -116,8 +127,22 @@ export const MainScreen = ({handleAuth}:{handleAuth:any}) => {
         <div>{page}</div>
         <Drawer open={open} onClose={toggleDrawer(false)}>
           {DrawerList}
-        </Drawer>
+          <Divider />
+      <List sx={{ marginTop: 'auto' }}>
+        <ListItem 
+          button
+          component="a"
+          href="https://github.com/Innovation-Software-in-Sky/GCP-Hackathon-2024-vidyaai"
+          target="_blank"
+        >
+          <ListItemIcon>
+            <GitHubIcon />
+          </ListItemIcon>
+          <ListItemText primary="GitHub" />
+        </ListItem>
+      </List>
+    </Drawer>
       </div>
-    </>
+    </GradientBackground>
   );
 };

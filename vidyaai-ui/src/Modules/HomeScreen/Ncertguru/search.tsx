@@ -1,11 +1,31 @@
-import { Box, Typography, Button } from '@mui/material';
-import React, { useEffect } from 'react';
+import {
+  Box,
+  Typography,
+  Button,
+  IconButton,
+  DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import InfoIcon from "@mui/icons-material/Info";
+import { styled } from '@mui/system';
+
+const GradientBackground = styled('div')({
+  background: 'linear-gradient(to bottom, #ffffff, #b3e5fc)',
+  minHeight: '100vh', // Set the minimum height to fill the viewport
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
 
 const SearchWidget: React.FC = () => {
   useEffect(() => {
     const loadScript = (src: string) => {
       return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
+        const script = document.createElement("script");
         script.src = src;
         script.async = true;
         script.onload = resolve;
@@ -14,33 +34,88 @@ const SearchWidget: React.FC = () => {
       });
     };
 
-    loadScript('https://cloud.google.com/ai/gen-app-builder/client?hl=en_US')
+    loadScript("https://cloud.google.com/ai/gen-app-builder/client?hl=en_US")
       .then(() => {
-        console.log('Google Cloud AI script loaded successfully');
+        console.log("Google Cloud AI script loaded successfully");
       })
       .catch((err) => {
-        console.error('Failed to load the Google Cloud AI script:', err);
+        console.error("Failed to load the Google Cloud AI script:", err);
       });
   }, []);
 
-  const config = process.env.REACT_APP_CONFIG_ID+"";
+  const config = process.env.REACT_APP_CONFIG_ID + "";
+  const [showI, setShowI] = useState<boolean>(false);
+
+  const handleinfoShow = () => {
+    setShowI(true);
+  };
+
+  const handleinfoClose = () => {
+    setShowI(false);
+  };
 
   return (
-    <Box sx={{ p: 4, maxWidth: '800px', margin: '10% auto' }}>
-    <Typography variant="h5" gutterBottom>
-      NCERT books, undoubtedly, are the best reference books available for JEE preparation. However, when asked if NCERT books are all that we need for the preparation, the answer is NO.
-    </Typography>
-    <Typography variant="body1" paragraph>
-      We can say that NCERT textbooks are essential, but not completely sufficient, for JEE preparation. Though 60-70 % of the questions appearing in the JEE exams are directly from the NCERT textbooks, these books lack the types of questions and MCQs that are asked in the exam. The NCERT books do not comprise enough problems of JEE difficulty level, hence, students should make sure that they refer to books containing multiple-choice questions of higher difficulty levels. Students appearing for the JEE Mains and Advance should also practise and solve the previous years’ question papers as well as sample papers. Since time management plays an important role in the Joint Entrance Examination, students should also learn to strictly manage time. Students can get hands-on experience in solving the exam on time by attempting mock tests available online, at BYJU’S.
-    </Typography>
-    <Button id="searchWidgetTrigger"
-      variant="contained"
-      color="primary"
-    >
-      Open Search Widget
-    </Button>
-    <gen-search-widget configid={config} triggerid="searchWidgetTrigger"></gen-search-widget>
-  </Box>
+    <GradientBackground>
+      <Box sx={{ p: 4, maxWidth: "800px", margin: "10% auto" }}>
+        <Typography variant="h5" gutterBottom>
+          Unlocking Knowledge: Search, Solve, and Learn with VidyaAI
+        </Typography>
+        <Typography  align="justify" variant="body1" paragraph>
+          Dive into a realm of boundless discovery with VidyaAI, your ultimate
+          guide to unlocking the mysteries of knowledge. Whether you're seeking
+          answers, tackling challenges, or delving into new subjects, VidyaAI is
+          your compass, leading you through a labyrinth of learning with
+          precision and insight. Experience the thrill of exploration as you
+          navigate a treasure trove of information, harnessing the power of AI
+          to transform curiosity into understanding.
+        </Typography>
+        <span>
+          <IconButton
+            onClick={handleinfoShow}
+            sx={{ ml: 1, flexGrow: 0 }}
+            color="primary"
+          >
+            <InfoIcon />
+          </IconButton>
+        </span>
+        <span>
+          {" "}
+          <Button id="searchWidgetTrigger" variant="contained" color="primary">
+            Open Search Widget
+          </Button>
+        </span>
+        <gen-search-widget
+          configid={config}
+          triggerid="searchWidgetTrigger"
+        ></gen-search-widget>
+      </Box>
+      <Dialog
+        open={showI}
+        onClose={handleinfoClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Disclaimer: Search Term of Use"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText align="justify" id="alert-dialog-description">
+            This model utilizes Google's language models for its functionality.
+            The data used for training includes NCERT PDFs for educational
+            purposes. It's essential to note that the answers generated by the
+            model may be hallucinated, so it's advised to crosscheck the facts
+            independently. Please refrain from entering any personally
+            identifiable information. The preview provided is solely for testing
+            purposes in a hackathon context.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleinfoClose} autoFocus>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </GradientBackground>
   );
 };
 
