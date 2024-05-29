@@ -19,12 +19,6 @@ Imagine a study companion that never gets tired, is always ready to help, and ca
 
 Say goodbye to frustration and confusion. With Vidya AI, mastering the syllabus is just a conversation away. Welcome to the future of education. Welcome to Vidya AI.
 
-
-## Demo Video
-[![Watch the video](/vidyaai-ui/src/Assets/loginpage.jpg)](https://youtu.be/YOUR_VIDEO_ID)
-
-
-
 ## Features
 
 - **Personalized Learning**: Vidya AI utilizes advanced AI algorithms to analyze and understand each student's learning patterns, allowing it to tailor its recommendations and explanations to individual needs, ensuring maximum comprehension and retention.
