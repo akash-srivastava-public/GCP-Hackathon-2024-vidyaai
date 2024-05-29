@@ -40,7 +40,7 @@ My App is a modern web application built with React for the frontend, Node.js an
 2. Set up the Environment
    ```bash
    export REACT_APP_CONFIG_ID="vertex ai search agent config id"
-   export GOOGLE_CLOUD_PROJECT="gcp project id
+   export GOOGLE_CLOUD_PROJECT="gcp project id"
    export DIALOGFLOW_CX_LOCATION="project location e.g.global"
    export DIALOGFLOW_CX_AGENT_ID="dialogflow cx agent id"
    export DIALOGFLOW_CX_LANGUAGE_CODE="dialogflow cx language e.ge. en"
