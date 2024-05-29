@@ -8,8 +8,6 @@
 
 ## Overview
 
-<div style="text-align: justify">
-
 Introducing Vidya AI, the game-changer in self-study for school students. Vidya AI harnesses the power of Vertex AI to create a personalized learning experience like never before. By simply uploading PDFs of schoolbooks, notes, and assignments, Vidya AI generates custom embeddings and leverages Google's advanced language model to tailor its functionality to each student's unique curriculum.
 
 Here's how it works: Vidya AI acts as an intelligent chatbot and robust search engine, enabling students to easily navigate and comprehend their syllabus. Whether they're struggling to understand complex concepts or need help solving challenging numerical problems, Vidya AI is there to guide them every step of the way. 
@@ -20,14 +18,13 @@ Imagine a study companion that never gets tired, is always ready to help, and ca
 
 Say goodbye to frustration and confusion. With Vidya AI, mastering the syllabus is just a conversation away. Welcome to the future of education. Welcome to Vidya AI.
 
-</div>
 
 ## Demo Video
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=bpzSQTZ9MzI" frameborder="0" allowfullscreen></iframe>
+[![Watch the video](/vidyaai-ui/src/Assets/loginpage.jpg)](https://youtu.be/YOUR_VIDEO_ID)
+
+
 
 ## Features
-
-<div style="text-align: justify">
 
 - **Personalized Learning**: Vidya AI utilizes advanced AI algorithms to analyze and understand each student's learning patterns, allowing it to tailor its recommendations and explanations to individual needs, ensuring maximum comprehension and retention.
 - **Intelligent Search**: With Vidya AI's powerful search capabilities, students can quickly find relevant information within their study materials, saving time and effort while ensuring they stay focused on the topics that matter most.
@@ -35,13 +32,12 @@ Say goodbye to frustration and confusion. With Vidya AI, mastering the syllabus 
 - **Interactive Engagement**: Through its chatbot interface, Vidya AI engages students in interactive learning experiences, fostering curiosity, exploration, and deeper understanding of complex concepts beyond what traditional study methods can offer.
 - **Secure Authentication**: Vidya AI prioritizes student privacy by offering secure authentication via Gmail, ensuring that personal data remains protected. By integrating with Gmail accounts, Vidya AI establishes a trusted connection, granting access to study materials while safeguarding sensitive information, thus providing students with peace of mind regarding their privacy and data security.
 
-</div>
-
 ## Tech Stack
 
-- **Frontend**: [React](https://reactjs.org/)
+- **Frontend**: [React](https://reactjs.org/),[Material UI](https://mui.com/material-ui/)
 - **Backend**: [Node.js](https://nodejs.org/), [Express](https://expressjs.com/)
 - **Containerization**: [Docker](https://www.docker.com/)
+- **Programming Language**: [TypeScript](https://www.typescriptlang.org/)
 
 ## GCP Services
 [Google Cloud Platform (GCP)](https://cloud.google.com/)
