@@ -91,3 +91,12 @@ Say goodbye to frustration and confusion. With Vidya AI, mastering the syllabus 
    npm run start
 
    ```
+
+## References
+
+- [Google Cloud Platform](https://cloud.google.com/)
+- [Google Cloud Vertex AI Agent Builder Hackathon](https://googlevertexai.devpost.com/) 
+
+## Contact
+
+Join on [Discord](https://discord.gg/bX9qnBHM) and suggest any feature, give your feeedback and report any bug.
