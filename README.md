@@ -1,6 +1,7 @@
 # VIDYA AI: Now self study hui asaan 🕮
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
@@ -96,6 +97,17 @@ Say goodbye to frustration and confusion. With Vidya AI, mastering the syllabus 
 
 - [Google Cloud Platform](https://cloud.google.com/)
 - [Google Cloud Vertex AI Agent Builder Hackathon](https://googlevertexai.devpost.com/) 
+
+## Technical Reads & Resources
+
+- [Project Demo Video]()
+- [Getting Started with GCP]()
+- [Enablement of API & Services]()
+- [Service User, IAM and OAuth]()
+- [Cloud Storage Bucket]()
+- [DialogFlow Cx, Vertex AI Agents]()
+- [Agents Integration with 3rd party App]()
+- [Cloud Run and 3rd party App deployment]()
 
 ## Contact
 
