@@ -1,4 +1,4 @@
-# My App
+# VIDYA AI: Now self study hui asaan 🕮
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
@@ -30,9 +30,29 @@ My App is a modern web application built with React for the frontend, Node.js an
 - npm (v6 or higher)
 - GCP account for deployment
 
-### Installation
+### Project Set up
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/my-app.git
-   cd my-app
+   git clone https://github.com/Innovation-Software-in-Sky/GCP-Hackathon-2024-vidyaai.git
+   npm install
+  
+2. Set up the Environment
+   ```bash
+   export REACT_APP_CONFIG_ID="vertex ai search agent config id"
+   export GOOGLE_CLOUD_PROJECT="gcp project id
+   export DIALOGFLOW_CX_LOCATION="project location e.g.global"
+   export DIALOGFLOW_CX_AGENT_ID="dialogflow cx agent id"
+   export DIALOGFLOW_CX_LANGUAGE_CODE="dialogflow cx language e.ge. en"
+   export PORT=8080
+   export GOOGLE_CLIENT_ID="gcp client id"
+   export GOOGLE_CLIENT_SECRET="gcp clent secret"
+
+3.  Build the App
+    ```bash
+    npm run bootstrap
+
+4. Start the App
+   ```bash
+   npm run start
+       
