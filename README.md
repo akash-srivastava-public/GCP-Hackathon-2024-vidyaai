@@ -95,7 +95,7 @@ Say goodbye to frustration and confusion. With Vidya AI, mastering the syllabus 
 
 ## Technical Reads & Resources
 
-- [Project Demo Video]()
+- [Project Demo Video](https://youtu.be/Gz7-5tMjOS8)
 - [Getting Started with GCP]()
 - [Enablement of API & Services]()
 - [Service User, IAM and OAuth]()
