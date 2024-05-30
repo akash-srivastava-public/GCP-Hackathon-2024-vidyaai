@@ -105,7 +105,7 @@ Say goodbye to frustration and confusion. With Vidya AI, mastering the syllabus 
 - [Cloud Run and 3rd party App deployment]()
 
 ## Developer
-[Akash Srivastava](https://github.com/sky-ether-public)
+[Akash Srivastava](https://www.linkedin.com/in/akash-sr-public)
 
 ## Contact
 
