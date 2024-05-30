@@ -104,6 +104,11 @@ Say goodbye to frustration and confusion. With Vidya AI, mastering the syllabus 
 - [Agents Integration with 3rd party App]()
 - [Cloud Run and 3rd party App deployment]()
 
+## Developer
+[Akash Srivastava](https://github.com/sky-ether-public)
+
 ## Contact
 
 Join on [Discord](https://discord.gg/bX9qnBHM) and suggest any feature, give your feeedback and report any bug.
+
+
