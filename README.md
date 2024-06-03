@@ -93,16 +93,13 @@ Say goodbye to frustration and confusion. With Vidya AI, mastering the syllabus 
 - [Google Cloud Platform](https://cloud.google.com/)
 - [Google Cloud Vertex AI Agent Builder Hackathon](https://googlevertexai.devpost.com/) 
 
-## Technical Reads & Resources
+## Technical Architecture
+<a href="" float="center">
+   <img src="https://github.com/Innovation-Software-in-Sky/GCP-Hackathon-2024-vidyaai/blob/main/Assets/architecture.svg" width="7500" height="500">
+</a>
 
+## Demo
 - [Project Demo Video](https://youtu.be/Gz7-5tMjOS8)
-- [Getting Started with GCP]()
-- [Enablement of API & Services]()
-- [Service User, IAM and OAuth]()
-- [Cloud Storage Bucket]()
-- [DialogFlow Cx, Vertex AI Agents]()
-- [Agents Integration with 3rd party App]()
-- [Cloud Run and 3rd party App deployment]()
 
 ## Developer
 [Akash Srivastava](https://www.linkedin.com/in/akash-sr-public)
